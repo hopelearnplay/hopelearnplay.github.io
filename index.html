@@ -620,6 +620,8 @@
         <li><a href="#contact">Book a Consultation</a></li>
       </ul>
     </div>
+	
+	<!--
     <div>
       <h4>Legal</h4>
       <ul>
@@ -628,7 +630,10 @@
         <li><a href="#">Do Not Sell My Personal Information</a></li>
       </ul>
     </div>
+	  -->
   </div>
+
+  
   <div class="container footer-bottom">
     <span>&copy; <span id="year"></span> Hope, Learn & Play. All rights reserved.</span>
     <span>Winter Springs, Florida &middot; Serving families virtually everywhere</span>
@@ -658,8 +663,7 @@
   prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
   nextBtn.addEventListener('click', function(){ scrollByCard(1); });
 
-  /* ---------- FAQ: only one open at a time (native <details name> already groups them in modern browsers,
-     this is a graceful enhancement for older ones) ---------- */
+  /* ---------- FAQ:  */
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function(item){
     item.addEventListener('toggle', function(){
