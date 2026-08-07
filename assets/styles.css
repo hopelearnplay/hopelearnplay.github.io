@@ -22,17 +22,13 @@
   --header-h:76px;
 }
 
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 14px)}
-body{
-  margin:0;
-  background:var(--cream);
-  color:var(--ink);
-  font-family:'Nunito',sans-serif;
-  font-size:17px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *,*::before,*::after{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
 h1,h2,h3,h4{
   font-family:'Baloo 2',cursive;
   color:var(--ink);
