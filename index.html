@@ -1,524 +1,705 @@
-/* ============================================================
-   TOKENS
-============================================================ */
-:root{
-  --cream:#FFFBF2;
-  --sand:#FFF3DC;
-  --ink:#2E2140;
-  --ink-soft:#5B4B72;
-  --teal:#2AAFC4;
-  --teal-dark:#1B8FA0;
-  --purple:#8B2E93;
-  --purple-dark:#6B1F72;
-  --orange:#E08A34;
-  --pink:#D14A8F;
-  --wine:#9C2A63;
-  --yellow:#FFD93D;
-  --yellow-deep:#F5B921;
-  --line:rgba(46,33,64,.12);
-  --shadow:0 12px 30px rgba(46,33,64,.12);
-  --radius:22px;
-  --maxw:1180px;
-  --header-h:76px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-html, body {
-  overscroll-behavior-x: none;
-  touch-action: pan-y;
-}
+<!-- ============ PRIMARY SEO ============ -->
+<title>Hope, Learn & Play | Educational Support Services, Tutoring & Homeschool Support</title>
+<meta name="description" content="Hope, Learn & Play is an educational support business specializing in neurodivergent students - offering assessments, individualized tutoring, and homeschool support, pre-K through 12th grade. A+ BBB rated. Virtual, in-person & mobile sessions serving Winter Springs & Central Florida.">
+<meta name="keywords" content="educational support services, neurodivergent tutoring Florida, homeschool support Winter Springs, special needs tutoring Florida, learning assessments, executive function coaching, homework help, standardized test prep">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Hope, Learn & Play">
+<link rel="canonical" href="https://www.hopelearnplay.com/">
+<meta name="theme-color" content="#2AAFC4">
 
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 14px)}
-body{
-  margin:0;
-  background:var(--cream);
-  color:var(--ink);
-  font-family:'Nunito',sans-serif;
-  font-size:17px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4{
-  font-family:'Baloo 2',cursive;
-  color:var(--ink);
-  line-height:1.15;
-  margin:0 0 .5em;
-}
-h1{font-size:clamp(2.3rem,6vw,3.6rem); font-weight:800}
-h2{font-size:clamp(1.8rem,4vw,2.5rem); font-weight:700}
-h3{font-size:1.3rem; font-weight:700}
-p{margin:0 0 1em}
-a{color:inherit}
-img{max-width:100%; display:block}
-.container{max-width:var(--maxw); margin-inline:auto; padding-inline:24px}
-.eyebrow{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:'Baloo 2',cursive; font-weight:600; font-size:.85rem;
-  letter-spacing:.06em; text-transform:uppercase;
-  color:var(--purple-dark); margin-bottom:14px;
-}
-.eyebrow::before{content:''; width:9px; height:9px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 4px rgba(255,217,61,.35)}
-.section{padding:88px 0}
-.section--alt{background:var(--sand)}
-.section-head{max-width:680px; margin-bottom:48px}
-.section-head.center{margin-inline:auto; text-align:center}
-.visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+<!-- ============ OPEN GRAPH / SOCIAL ============ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hope, Learn & Play">
+<meta property="og:title" content="Hope, Learn & Play | Educational Support Services, Tutoring & Homeschool Support">
+<meta property="og:description" content="Assessments, individualized tutoring, and homeschool support for neurodivergent students. A+ BBB rated. Virtual, in-person & mobile sessions.">
+<meta property="og:url" content="https://www.hopelearnplay.com/">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:image:width" content="3000">
+<meta property="og:image:height" content="3000">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hope, Learn & Play | Educational Support Services, Tutoring & Homeschool Support">
+<meta name="twitter:description" content="Assessments, individualized tutoring & homeschool support for neurodivergent students, pre-K through 12th grade. A+ BBB rated.">
+<meta name="twitter:image" content="assets/logo.png">
 
-/* Buttons */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  font-family:'Baloo 2',cursive; font-weight:700; font-size:1rem;
-  padding:14px 28px; border-radius:100px; border:2px solid transparent;
-  cursor:pointer; text-decoration:none; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-  white-space:nowrap;
-}
-.btn:active{transform:translateY(1px)}
-.btn-primary{background:var(--purple); color:#fff; box-shadow:0 8px 20px rgba(139,46,147,.35)}
-.btn-primary:hover{background:var(--purple-dark); box-shadow:0 10px 24px rgba(139,46,147,.45); transform:translateY(-2px)}
-.btn-secondary{background:#fff; color:var(--ink); border-color:var(--line)}
-.btn-secondary:hover{border-color:var(--teal); color:var(--teal-dark); transform:translateY(-2px)}
-.btn-sun{background:var(--yellow); color:var(--ink); box-shadow:0 8px 20px rgba(245,185,33,.4)}
-.btn-sun:hover{background:var(--yellow-deep); transform:translateY(-2px)}
-.btn-block{width:100%}
+<!-- ============ ICONS ============ -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
 
-/* Skip link */
-.skip-link{
-  position:absolute; left:12px; top:-60px; background:var(--ink); color:#fff;
-  padding:12px 18px; border-radius:10px; z-index:1000; transition:top .2s ease;
-  font-family:'Baloo 2',cursive; font-weight:600; text-decoration:none;
-}
-.skip-link:focus{top:12px}
+<!-- ============ FONTS ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-:focus-visible{outline:3px solid var(--teal); outline-offset:3px}
-
-/* ============================================================
-   HEADER
-============================================================ */
-header.site-header{
-  position:sticky; top:0; z-index:900;
-  background:rgba(255,251,242,.9);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid transparent;
-  transition:border-color .25s ease, box-shadow .25s ease, padding .25s ease;
-}
-header.site-header.scrolled{border-color:var(--line); box-shadow:0 6px 20px rgba(46,33,64,.06)}
-.nav-wrap{
-  height:var(--header-h);
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-}
-.brand{display:flex; align-items:center; gap:12px; text-decoration:none; flex-shrink:0}
-.brand img{height:52px; width:52px; object-fit:contain}
-.brand-text{font-family:'Baloo 2',cursive; font-weight:800; font-size:1.15rem; color:var(--ink); line-height:1.1}
-.brand-text span{display:block; font-family:'Nunito',sans-serif; font-weight:600; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--teal-dark)}
-
-nav.primary-nav{display:flex; align-items:center; gap:6px}
-nav.primary-nav a{
-  font-family:'Baloo 2',cursive; font-weight:600; font-size:.98rem;
-  color:var(--ink-soft); text-decoration:none; padding:10px 14px; border-radius:100px;
-  transition:background .18s ease, color .18s ease;
-  position:relative;
-}
-nav.primary-nav a:hover{background:rgba(139,46,147,.08); color:var(--purple)}
-nav.primary-nav a.active{color:var(--purple); background:rgba(139,46,147,.1)}
-
-.header-actions{display:flex; align-items:center; gap:12px}
-.menu-toggle{
-  display:none; align-items:center; justify-content:center;
-  width:46px; height:46px; border-radius:14px; border:1px solid var(--line);
-  background:#fff; cursor:pointer;
-}
-.menu-toggle svg{width:22px; height:22px}
-.menu-toggle[aria-expanded="true"] .icon-open{display:none}
-.menu-toggle[aria-expanded="false"] .icon-close{display:none}
-
-@media (max-width:900px){
-  nav.primary-nav{
-    position:fixed; inset:var(--header-h) 0 0 0; height:calc(100dvh - var(--header-h));
-    background:var(--cream); flex-direction:column; justify-content:flex-start;
-    padding:28px 24px; gap:4px; transform:translateX(100%); transition:transform .3s ease;
-    overflow-y:auto;
+<!-- ============ STRUCTURED DATA ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Hope, Learn & Play",
+  "alternateName": "HLP Educational Support",
+  "url": "https://www.hopelearnplay.com/",
+  "logo": "https://www.hopelearnplay.com/assets/logo.png",
+  "image": "https://www.hopelearnplay.com/assets/logo.png",
+  "description": "Educational support business specializing in neurodivergent students, offering assessments, individualized tutoring, and homeschool support, pre-K through 12th grade.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Winter Springs, Florida"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Winter Springs",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.facebook.com/HopeLearnPlay",
+    "https://www.instagram.com/hope.learn.play",
+    "https://www.youtube.com/channel/UCucvwJXXGV-acThy6JtjE2A",
+    "https://www.bbb.org/us/fl/winter-springs/profile/education/hope-learn-play-llc-0733-90763793"
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "description": "By appointment"
   }
-  nav.primary-nav.open{transform:translateX(0)}
-  nav.primary-nav a{width:100%; padding:16px 18px; font-size:1.1rem; border-bottom:1px solid var(--line); border-radius:12px}
-  .nav-cta{margin-top:16px; width:100%}
-  .header-actions .btn-primary.desktop-only{display:none}
-  .menu-toggle{display:inline-flex}
 }
-@media (min-width:901px){
-  .nav-cta{display:none}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What ages and grade levels do you support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We work with students from Pre-K through 12th grade, including learning assessments, homework help, and standardized test preparation." }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of assessments do you offer?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We offer academic and skill-based assessments and diagnostics used to build an individualized action plan for each learner, with ongoing progress tracking shared with caregivers." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you support homeschool families?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer dedicated homeschool support, including curriculum guidance, skill-building plans, and enrichment sessions for homeschooling families." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer virtual, in-person, and mobile sessions?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer live virtual sessions over Zoom available anywhere, private-office sessions in Winter Springs, Florida, and mobile sessions where we come to you." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with neurodivergent students?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Neurodivergent students are our specialty. Our approach blends assessments, individualized tutoring, and homeschool support tailored to each learner." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we get started?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Reach out through our contact form or social channels to schedule a free introductory conversation about your child's needs." }
+    }
+  ]
 }
+</script>
 
-/* ============================================================
-   HERO
-============================================================ */
-.hero{position:relative; overflow:hidden; padding:64px 0 96px}
-.hero::before{
-  content:''; position:absolute; inset:0; z-index:0;
-  background:
-    radial-gradient(560px 420px at 82% 8%, rgba(255,217,61,.35), transparent 65%),
-    radial-gradient(420px 340px at -5% 90%, rgba(42,175,196,.18), transparent 70%);
-}
-.hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center}
-.hero-copy .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 32px}
-.pill{
-  display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line);
-  padding:9px 16px; border-radius:100px; font-weight:700; font-size:.86rem; color:var(--ink-soft);
-  box-shadow:0 4px 10px rgba(46,33,64,.05);
-}
-.pill span.dot{width:8px; height:8px; border-radius:50%}
-.hero-cta-row{display:flex; flex-wrap:wrap; gap:14px}
-.hero-copy p.lead{font-size:1.15rem; color:var(--ink-soft); max-width:52ch}
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
 
-.hero-art{position:relative; display:flex; align-items:center; justify-content:center}
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     HEADER / NAV
+============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+    <a href="#home" class="brand" aria-label="Hope, Learn & Play home">
+      <img src="assets/logo.png" alt="Hope, Learn & Play logo" width="52" height="52">
+      <span class="brand-text">Hope, Learn & Play<span>Educational Support Services</span></span>
+    </a>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="about.html">About</a>
+      <a href="#services">Services</a>
+	<a href="#early-learning">STEAM</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-secondary nav-cta">Book a Consultation</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#contact" class="btn btn-primary desktop-only">Book a Consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     TRUST BAR (BBB)
+============================================================ -->
+<div class="trust-bar">
+  <div class="container trust-bar-inner">
+    <a href="https://www.bbb.org/us/fl/winter-springs/profile/education/hope-learn-play-llc-0733-90763793#bbbseal" target="_blank" rel="noopener" class="bbb-link" aria-label="View our A+ Better Business Bureau rating (opens in a new tab)">
+      <img src="assets/bbb.webp" alt="Better Business Bureau A+ Rating" width="120" height="46">
+    </a>
+    <p>Proudly <strong>BBB A+ Rated</strong> - Families trust us because we show up, every time.</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Serving Winter Springs, FL & families everywhere online</p>
+        <h1>Assessments. Tutoring. Homeschool support that fits your child.</h1>
+        <p class="lead">Hope, Learn & Play is an educational support business specializing in neurodivergent students; offering individualized assessments, one-on-one tutoring, and homeschool support so every child can learn in the way that works best for them.</p>
+
+        <div class="pill-row" aria-label="Available session formats">
+          <span class="pill"><span class="dot" style="background:var(--teal)"></span>Virtual via Zoom</span>
+          <span class="pill"><span class="dot" style="background:var(--purple)"></span>In-Person</span>
+          <span class="pill"><span class="dot" style="background:var(--orange)"></span>Mobile (Central FL)</span>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+          <a href="#services" class="btn btn-secondary">Explore Programs</a>
+        </div>
+      </div>
+
+      <div class="hero-art reveal">
+    <img
+        src="assets/classroom.png"
+        alt="Ms. Monique with students"
+        class="hero-photo">
+</div>
 
 
-.hero-photo{
-  width:100%;
-max-width:780px;
-  aspect-ratio:4 / 3;
-  object-fit:cover;
-  object-position:center;
-  border-radius:28px;
-  box-shadow:0 24px 60px rgba(46,33,64,.18);
-  border:6px solid rgba(255,255,255,.75);
-  display:block;
-}
+      </div>
+    </div>
+  </section>
 
-.sun-badge{width:min(360px,80%); aspect-ratio:1; position:relative}
-.sun-badge img{width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 20px 40px rgba(139,46,147,.22))}
-.sun-badge .float-chip{
-  position:absolute; background:#fff; border-radius:18px; padding:12px 16px; box-shadow:var(--shadow);
-  font-family:'Baloo 2',cursive; font-weight:700; font-size:.85rem; display:flex; align-items:center; gap:8px;
-  border:1px solid var(--line);
-}
-.chip-1{top:6%; left:-8%; color:var(--teal-dark)}
-.chip-2{bottom:10%; right:-10%; color:var(--pink)}
+  <svg class="divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,64 480,0 720,20 C960,40 1200,64 1440,24 L1440,60 L0,60 Z" fill="#FFF3DC"/></svg>
 
-@keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
-.float-chip{animation:floaty 5s ease-in-out infinite}
-.chip-2{animation-delay:1.4s}
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section class="section section--alt" id="about">
+    <div class="container about-grid">
+      <div class="about-art reveal">
+        <p class="eyebrow">Who we are</p>
+        <h2>Educational support built around your child</h2>
+        <p>We believe every learner deserves an approach built around how they learn best; not a one-size-fits-all curriculum. Founded by Ms. Monique Harris, Hope, Learn & Play specializes in neurodivergent students, pairing clear assessments with individualized tutoring and homeschool support families can lean on.</p>
+        <ul class="value-list">
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2AAFC4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Assessments & individualized action plans, Pre-K through 12th grade</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B2E93" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Specialized support for neurodivergent students</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E08A34" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Dedicated homeschool support & enrichment</li>
+        </ul>
+        <div class="team-row">
+          <a href="about.html" class="btn btn-secondary">Read our full story &rarr;</a>
+        </div>
+      </div>
 
-@media (max-width:960px){
-  .hero-grid{grid-template-columns:1fr; text-align:center}
-  .hero-copy .pill-row, .hero-cta-row{justify-content:center}
-  .hero-copy p.lead{margin-inline:auto}
-  .hero-art{order:-1; margin-bottom:8px}
-  .sun-badge{width:min(260px,70%)}
-  .float-chip{display:none}
-}
+      <div class="reveal">
+        <div class="video-card">
+          <span class="video-badge">&#9654; Watch our story</span>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/Mqvn1uYfb4w?autoplay=1&mute=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-caption">
+            <img src="assets/hero.jpg" alt="Ms. Monique Harris, founder of Hope, Learn & Play">
+            <div>
+              <strong>Ms. Monique Harris</strong>
+              <span>Founder, Hope, Learn & Play</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* ============================================================
-   WAVY DIVIDER
-============================================================ */
-.divider{display:block; width:100%; height:60px; margin-top:-1px}
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">What we offer</p>
+        <h2>Key services families rely on</h2>
+        <p>Every program can flex to your child's grade level, learning style, and goals. <a href="subscriptions.html">See subscription plans & pricing &rarr;</a></p>
+      </div>
 
-/* ============================================================
-   SERVICES
-============================================================ */
-.services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
-.service-card{
-  background:#fff; border-radius:var(--radius); padding:30px 26px; border:1px solid var(--line);
-  box-shadow:var(--shadow); position:relative; overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.service-card:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(46,33,64,.16)}
-.service-card::before{content:''; position:absolute; top:0; left:0; right:0; height:6px; background:var(--accent,var(--teal))}
-.service-icon{
-  width:54px; height:54px; border-radius:16px; display:flex; align-items:center; justify-content:center;
-  background:color-mix(in srgb, var(--accent,var(--teal)) 16%, white); margin-bottom:18px; font-size:1.6rem;
-}
-.service-card h3{margin-bottom:8px}
-.service-card p{color:var(--ink-soft); font-size:.98rem; margin-bottom:0}
+      <div class="services-grid">
+        <article class="service-card reveal" style="--accent:var(--teal)">
+          <div class="service-icon">📋</div>
+          <h3>Assessments & Diagnostics</h3>
+          <p>Clear, individualized assessments that identify strengths and needs and set the direction for a learning plan.</p>
+        </article>
 
-@media (max-width:960px){.services-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.services-grid{grid-template-columns:1fr}}
+        <article class="service-card reveal" style="--accent:var(--purple)">
+          <div class="service-icon">🧑‍🏫</div>
+          <h3>Individualized Tutoring</h3>
+          <p>One-on-one tutoring for Pre-K through 12th grade; homework help and standardized test prep, offered virtually, in-person, or mobile in the Winter Springs, FL area.</p>
+        </article>
 
-/* ============================================================
-   ABOUT
-============================================================ */
-.about-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:56px; align-items:center}
-.about-art{
-  position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
-  padding:36px; box-shadow:var(--shadow);
-}
-.team-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
-.team-chip{
-  display:flex; align-items:center; gap:10px; background:var(--sand); border-radius:100px; padding:8px 16px 8px 8px;
-  font-family:'Baloo 2',cursive; font-weight:700; font-size:.92rem;
-}
-.team-chip .avatar{
-  width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  color:#fff; font-family:'Baloo 2',cursive; font-weight:800;
-}
-.value-list{list-style:none; margin:24px 0 0; padding:0; display:grid; gap:14px}
-.value-list li{display:flex; gap:12px; align-items:flex-start; font-weight:700; color:var(--ink)}
-.value-list li svg{flex-shrink:0; margin-top:3px}
-@media (max-width:900px){.about-grid{grid-template-columns:1fr}}
+        <article class="service-card reveal" style="--accent:var(--pink)">
+          <div class="service-icon">🏡</div>
+          <h3>Homeschool Support</h3>
+          <p>Curriculum guidance and enrichment sessions designed for homeschooling families, including partnerships with local homeschool groups.</p>
+        </article>
 
-/* ============================================================
-   STEAM
-============================================================ */
-.steam-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:18px}
-.steam-card{
-  background:#fff; border-radius:18px; padding:22px 16px; text-align:center; border:1px solid var(--line);
-  box-shadow:0 8px 20px rgba(46,33,64,.06);
-}
-.steam-card .letter{
-  width:44px; height:44px; border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center;
-  font-family:'Baloo 2',cursive; font-weight:800; color:#fff; font-size:1.1rem;
-}
-.steam-card p{font-size:.9rem; color:var(--ink-soft); margin:0}
-@media (max-width:900px){.steam-grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:560px){.steam-grid{grid-template-columns:repeat(2,1fr)}}
+        <article class="service-card reveal" style="--accent:var(--orange)">
+          <div class="service-icon">🧠</div>
+          <h3>Skill-Building Action Plans</h3>
+          <p>Individualized plans that turn assessment results into practical, trackable goals for organization, focus, and independence.</p>
+        </article>
 
-/* ============================================================
-   HOW IT WORKS
-============================================================ */
-.steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:22px; counter-reset:step}
-.step{position:relative; padding:34px 22px 22px; background:#fff; border-radius:18px; border:1px solid var(--line)}
-.step::before{
-  counter-increment:step; content:counter(step);
-  position:absolute; top:-20px; left:22px; width:44px; height:44px; border-radius:50%;
-  background:var(--purple); color:#fff; font-family:'Baloo 2',cursive; font-weight:800; font-size:1.1rem;
-  display:flex; align-items:center; justify-content:center; box-shadow:0 8px 18px rgba(139,46,147,.35);
-}
-.step h3{font-size:1.08rem; margin-top:6px}
-.step p{color:var(--ink-soft); font-size:.94rem; margin-bottom:0}
-@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.steps{grid-template-columns:1fr}}
+        <article class="service-card reveal" style="--accent:var(--wine)">
+          <div class="service-icon">🤝</div>
+          <h3>Caregiver Consulting</h3>
+          <p>Weekly feedback and student performance consulting so caregivers always know how their child is progressing.</p>
+        </article>
 
-/* ============================================================
-   TESTIMONIALS
-============================================================ */
-.testi-wrap{position:relative}
-.testi-track{
-  display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 6px 26px;
-  scrollbar-width:none;
-}
-.testi-track::-webkit-scrollbar{display:none}
-.testi-card{
-  scroll-snap-align:start; flex:0 0 min(420px,86vw); background:#fff; border-radius:var(--radius);
-  padding:30px; border:1px solid var(--line); box-shadow:var(--shadow); display:flex; flex-direction:column;
-}
-.testi-quote{font-size:1.32rem; line-height:1.15; font-family:'Baloo 2',cursive; color:var(--purple); margin-bottom:14px}
-.testi-card p.text{color:var(--ink-soft); flex:1}
-.testi-name{font-family:'Baloo 2',cursive; font-weight:700; margin-top:14px; color:var(--ink)}
-.testi-controls{display:flex; justify-content:center; gap:12px; margin-top:6px}
-.testi-controls button{
-  width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:#fff; cursor:pointer;
-  display:flex; align-items:center; justify-content:center; transition:background .18s ease;
-}
-.testi-controls button:hover{background:var(--sand)}
+        <article class="service-card reveal" style="--accent:var(--teal-dark)">
+          <div class="service-icon">💻</div>
+          <h3>24/7 Learning Access</h3>
+          <p>Ongoing access to IXL.com and interactive support materials to reinforce learning between sessions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-/* ============================================================
-   FAQ
-============================================================ */
-.faq-list{display:grid; gap:14px; max-width:820px}
-.faq-item{background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden}
-.faq-item summary{
-  cursor:pointer; list-style:none; padding:20px 24px; font-family:'Baloo 2',cursive; font-weight:700;
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary .plus{
-  flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--sand);
-  display:flex; align-items:center; justify-content:center; transition:transform .25s ease;
-  font-size:1.2rem; color:var(--purple); font-weight:800;
-}
-.faq-item[open] summary .plus{transform:rotate(45deg)}
-.faq-item .faq-body{padding:0 24px 22px; color:var(--ink-soft)}
+  <svg class="divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 C240,0 480,60 720,36 C960,12 1200,0 1440,30 L1440,60 L0,60 Z" fill="#FFF3DC"/></svg>
 
-/* ============================================================
-   CONTACT
-============================================================ */
-.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start}
-.contact-card{background:#fff; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--shadow); padding:34px}
-.form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
-.field label{font-weight:700; font-size:.92rem}
-.field input, .field select, .field textarea{
-  font:inherit; padding:12px 14px; border-radius:12px; border:1.5px solid var(--line); background:var(--cream);
-  transition:border-color .18s ease, box-shadow .18s ease;
-}
-.field input:focus, .field select:focus, .field textarea:focus{
-  border-color:var(--teal); box-shadow:0 0 0 4px rgba(42,175,196,.15); outline:none;
-}
-.field textarea{resize:vertical; min-height:110px}
-.contact-info-list{list-style:none; margin:0 0 28px; padding:0; display:grid; gap:18px}
-.contact-info-list li{display:flex; gap:14px; align-items:flex-start}
-.contact-info-list .ico{
-  width:46px; height:46px; border-radius:14px; background:var(--sand); flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-}
-.contact-info-list strong{display:block; font-family:'Baloo 2',cursive}
-.social-row{display:flex; gap:12px; margin-top:8px}
-.social-row a{
-  width:46px; height:46px; border-radius:50%; background:var(--ink); color:#fff; display:flex;
-  align-items:center; justify-content:center; transition:background .18s ease, transform .18s ease;
-}
-.social-row a:hover{background:var(--purple); transform:translateY(-3px)}
-@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
-@media (max-width:560px){.form-row{grid-template-columns:1fr}}
+<!-- ============================================================
+       EARLY LEARNING / STEAM
+  ============================================================ -->
+  <section class="section section--alt" id="early-learning">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">STEAM curriculum</p>
+        <h2>Early learning that feels like play</h2>
+        <p>Our Pre-K & early elementary sessions weave Science, Technology, Engineering, Art, and Math into playful, hands-on discovery.</p>
+      </div>
 
-/* dialog */
-dialog#confirmDialog{
-  border:none; border-radius:24px; padding:0; max-width:420px; width:90vw; box-shadow:0 30px 60px rgba(46,33,64,.35);
-}
-dialog#confirmDialog::backdrop{background:rgba(46,33,64,.55); backdrop-filter:blur(2px)}
-.dialog-inner{padding:36px 30px; text-align:center}
-.dialog-inner .sun-mini{width:64px; height:64px; margin:0 auto 16px}
-.dialog-inner h3{margin-bottom:10px}
-.dialog-inner p{color:var(--ink-soft)}
+      <div class="steam-grid">
+        <div class="steam-card reveal">
+          <div class="letter" style="background:var(--pink)">A</div>
+          <p>Art projects that inspire imagination and self-expression</p>
+        </div>
+        <div class="steam-card reveal">
+          <div class="letter" style="background:var(--teal)">M</div>
+          <p>Math games that introduce patterns, counting, and reasoning</p>
+        </div>
+        <div class="steam-card reveal">
+          <div class="letter" style="background:var(--orange)">S</div>
+          <p>Science experiments that promote observation and curiosity</p>
+        </div>
+        <div class="steam-card reveal">
+          <div class="letter" style="background:var(--purple)">L</div>
+          <p>Storytime and music to build language and communication skills</p>
+        </div>
+        <div class="steam-card reveal">
+          <div class="letter" style="background:var(--wine)">T+E</div>
+          <p>Technology and engineering challenges using everyday materials</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* ============================================================
-   CTA BAND
-============================================================ */
-.cta-band{
-  background:linear-gradient(120deg,var(--purple),var(--wine));
-  border-radius:32px; padding:56px 40px; text-align:center; color:#fff; position:relative; overflow:hidden;
-}
-.cta-band h2{color:#fff}
-.cta-band p{color:rgba(255,255,255,.88); max-width:56ch; margin-inline:auto}
-.cta-band .btn-sun{margin-top:22px}
 
-/* ============================================================
-   FOOTER
-============================================================ */
-footer.site-footer{background:var(--ink); color:rgba(255,255,255,.78); padding:56px 0 26px}
-.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px}
-.footer-grid h4{color:#fff; font-family:'Baloo 2',cursive; margin-bottom:14px; font-size:1.02rem}
-.footer-brand{display:flex; align-items:center; gap:12px; margin-bottom:14px}
-.footer-brand img{height:44px; width:44px}
-.footer-brand span{font-family:'Baloo 2',cursive; color:#fff; font-weight:800}
-footer.site-footer ul{list-style:none; margin:0; padding:0; display:grid; gap:10px}
-footer.site-footer a{color:rgba(255,255,255,.78); text-decoration:none; font-size:.95rem}
-footer.site-footer a:hover{color:var(--yellow)}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.14); margin-top:40px; padding-top:22px;
-  display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; font-size:.85rem;
-}
-@media (max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.footer-grid{grid-template-columns:1fr}}
 
-/* Back to top */
-#backToTop{
-  position:fixed; right:22px; bottom:22px; z-index:500; width:52px; height:52px; border-radius:50%;
-  background:var(--yellow); border:none; box-shadow:0 10px 24px rgba(245,185,33,.5); cursor:pointer;
-  display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none;
-  transform:translateY(10px); transition:opacity .25s ease, transform .25s ease;
-}
-#backToTop.show{opacity:1; pointer-events:auto; transform:translateY(0)}
 
-/* reveal animation */
-.reveal{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease}
-.reveal.in-view{opacity:1; transform:translateY(0)}
 
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  .reveal{opacity:1; transform:none; transition:none}
-  .float-chip{animation:none}
-  *{scroll-behavior:auto !important}
-}
+  <!-- ============================================================
+       HOW IT WORKS
+  ============================================================ -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">Getting started is simple</p>
+        <h2>How a partnership with us works</h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <h3>Reach out</h3>
+          <p>Send us a message or find us on social media to introduce your child and your goals.</p>
+        </li>
+        <li class="step reveal">
+          <h3>Free consultation</h3>
+          <p>We talk through your child's strengths, challenges, and what success looks like.</p>
+        </li>
+        <li class="step reveal">
+          <h3>Assessment & plan</h3>
+          <p>We assess where your child is today and build an individualized action plan around it.</p>
+        </li>
+        <li class="step reveal">
+          <h3>Begin sessions</h3>
+          <p>Sessions start virtually, in-person, or mobile on a schedule that works for your family.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-/* ============================================================
-   TRUST BAR (BBB)
-============================================================ */
-.trust-bar{background:#fff; border-bottom:1px solid var(--line)}
-.trust-bar-inner{
-  display:flex; align-items:center; justify-content:center; gap:16px;
-  padding:12px 24px; flex-wrap:wrap; text-align:center;
-}
-.trust-bar-inner p{margin:0; font-size:.92rem; color:var(--ink-soft)}
-.bbb-link{display:inline-flex; flex-shrink:0; border-radius:8px; transition:transform .18s ease, box-shadow .18s ease}
-.bbb-link:hover{transform:translateY(-2px)}
-.bbb-link img{height:40px; width:auto; display:block}
+  <svg class="divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,64 480,0 720,20 C960,40 1200,64 1440,24 L1440,60 L0,60 Z" fill="#FFF3DC"/></svg>
 
-/* ============================================================
-   VIDEO CARD (About)
-============================================================ */
-.video-card{
-  position:relative; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
-  box-shadow:var(--shadow); padding:14px; overflow:visible;
-}
-.video-card .video-frame{
-  position:relative; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden;
-  background:var(--ink); box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
-}
-.video-card .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-.video-badge{
-  position:absolute; top:-16px; left:24px; background:var(--yellow); color:var(--ink);
-  font-family:'Baloo 2',cursive; font-weight:800; font-size:.85rem; padding:9px 18px;
-  border-radius:100px; box-shadow:0 8px 18px rgba(245,185,33,.45); display:inline-flex; align-items:center; gap:6px;
-  z-index:2; transform:rotate(-2deg);
-}
-.video-caption{display:flex; align-items:center; gap:12px; padding:16px 8px 6px}
-.video-caption img{
-  width:48px; height:48px; border-radius:50%; object-fit:cover; border:2px solid #fff; box-shadow:0 4px 10px rgba(46,33,64,.18);
-  flex-shrink:0;
-}
-.video-caption strong{font-family:'Baloo 2',cursive; display:block; font-size:.95rem}
-.video-caption span{color:var(--ink-soft); font-size:.85rem}
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section class="section section--alt" id="testimonials">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">What families are saying</p>
+        <h2>Real stories from our Hope, Learn & Play families</h2>
+      </div>
 
-/* ============================================================
-   PARTNERS / BUSINESSES WE SUPPORT
-============================================================ */
-.partners-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
-.partner-card{
-  background:#fff; border:1px solid var(--line); border-radius:18px; padding:22px;
-  display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px;
-  text-decoration:none; color:var(--ink); box-shadow:0 6px 16px rgba(46,33,64,.05);
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.partner-card:hover{transform:translateY(-4px); box-shadow:0 14px 28px rgba(46,33,64,.12); border-color:var(--teal)}
-.partner-card img{width:100%; max-width:120px; height:64px; object-fit:contain}
-.partner-card span{font-family:'Baloo 2',cursive; font-weight:700; font-size:.92rem}
-.partner-card.placeholder{
-  border-style:dashed; border-width:2px; color:var(--ink-soft); cursor:default;
-}
-.partner-card.placeholder:hover{transform:none; box-shadow:0 6px 16px rgba(46,33,64,.05); border-color:var(--line)}
-.partner-card.placeholder .placeholder-icon{
-  width:64px; height:64px; border-radius:16px; background:var(--sand); display:flex; align-items:center; justify-content:center;
-  color:var(--purple); font-size:1.6rem;
-}
-@media (max-width:960px){.partners-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.partners-grid{grid-template-columns:1fr}}
+      <div class="testi-wrap reveal">
+        <div class="testi-track" id="testiTrack" tabindex="0" aria-label="Family testimonials, scrollable">
+          <article class="testi-card">
+            <div class="testi-quote">&ldquo;&rdquo;</div>
+            <p class="text">My son enjoyed all of your classes this past week, and I saw that he was looking forward to each next class. Thank you for making classes so engaging, I really like the format and organization.</p>
+            <p class="testi-name">A Hope, Learn & Play Parent</p>
+          </article>
+          <article class="testi-card">
+            <div class="testi-quote">&ldquo;&rdquo;</div>
+            <p class="text">We are enjoying the class so far! Our daughter looks forward to learning and seeing her new friends every week.</p>
+            <p class="testi-name">A Hope, Learn & Play Parent</p>
+          </article>
+          <article class="testi-card">
+            <div class="testi-quote">&ldquo;&rdquo;</div>
+            <p class="text">We honestly don't know how we would have made it through nine months of the pandemic without you and our virtual preschool. Rory gets so excited reading the materials list for the STEM activities and gathering everything together.</p>
+            <p class="testi-name">The Toussaint Family</p>
+          </article>
+          <article class="testi-card">
+            <div class="testi-quote">&ldquo;&rdquo;</div>
+            <p class="text">I love the way my son is absorbing the material through so many different ways: hands-on, music, and verbal. He is really taking it in and retaining it. 😁</p>
+            <p class="testi-name">A Hope, Learn & Play Parent</p>
+          </article>
+        </div>
+        <div class="testi-controls">
+          <button type="button" id="testiPrev" aria-label="Previous testimonial">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" id="testiNext" aria-label="Next testimonial">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* ============================================================
-   PRICING (Subscriptions page)
-============================================================ */
-.pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
-.price-card{
-  background:#fff; border-radius:var(--radius); padding:30px 26px; border:1px solid var(--line);
-  box-shadow:var(--shadow); display:flex; flex-direction:column; position:relative; overflow:hidden;
-}
-.price-card::before{content:''; position:absolute; top:0; left:0; right:0; height:6px; background:var(--accent,var(--teal))}
-.price-card h3{margin-bottom:4px}
-.price-card .price{font-family:'Baloo 2',cursive; font-weight:800; font-size:2.1rem; color:var(--ink); margin:6px 0 2px}
-.price-card .price small{font-family:'Nunito',sans-serif; font-weight:700; font-size:.9rem; color:var(--ink-soft)}
-.price-card .reg-fee{font-size:.82rem; color:var(--purple-dark); font-weight:700; margin-bottom:14px}
-.price-card p.desc{color:var(--ink-soft); font-size:.94rem}
-.price-card ul{list-style:none; margin:14px 0 24px; padding:0; display:grid; gap:10px; flex:1}
-.price-card ul li{display:flex; gap:10px; align-items:flex-start; font-size:.92rem; color:var(--ink)}
-.price-card ul li svg{flex-shrink:0; margin-top:3px}
-.price-card .btn{margin-top:auto}
-.price-note{
-  background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:26px 30px;
-  box-shadow:var(--shadow); margin-top:8px;
-}
-@media (max-width:960px){.pricing-grid{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.pricing-grid{grid-template-columns:1fr}}
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Good to know</p>
+        <h2>Frequently asked questions</h2>
+      </div>
 
-/* ============================================================
-   ABOUT PAGE
-============================================================ */
-.founder-hero{display:grid; grid-template-columns:.8fr 1.2fr; gap:56px; align-items:center}
-.founder-hero img{border-radius:var(--radius); box-shadow:var(--shadow); width:100%}
-.credentials-list{list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px}
-.credentials-list li{display:flex; gap:12px; align-items:flex-start; font-weight:700}
-.credentials-list li svg{flex-shrink:0; margin-top:3px}
-.timeline{display:grid; gap:22px; max-width:760px; margin-inline:auto}
-.timeline-item{background:#fff; border:1px solid var(--line); border-radius:18px; padding:24px 26px; box-shadow:0 8px 20px rgba(46,33,64,.06)}
-.timeline-item h3{font-size:1.05rem; margin-bottom:6px; color:var(--purple-dark)}
-.timeline-item p{margin-bottom:0; color:var(--ink-soft); font-size:.96rem}
-.signature-block{margin-top:28px; font-family:'Baloo 2',cursive; font-size:1.15rem; color:var(--purple-dark)}
-@media (max-width:900px){.founder-hero{grid-template-columns:1fr}}
+      <div class="faq-list reveal">
+        <details class="faq-item" name="faq">
+          <summary>What ages and grade levels do you support? <span class="plus">+</span></summary>
+          <div class="faq-body"><p>We work with students from Pre-K through 12th grade, including learning assessments, homework help, and standardized test preparation.</p></div>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>What kind of assessments do you offer? <span class="plus">+</span></summary>
+          <div class="faq-body"><p>We offer academic and skill-based assessments and diagnostics used to build an individualized action plan for each learner, with ongoing progress tracking shared with caregivers.</p></div>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>Do you support homeschool families? <span class="plus">+</span></summary>
+          <div class="faq-body"><p>Yes. We offer dedicated homeschool support, including curriculum guidance, skill-building plans, and enrichment sessions, and we partner with homeschool groups like Williams Academy of Excellence.</p></div>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>Do you offer virtual, in-person, and mobile sessions? <span class="plus">+</span></summary>
+          <div class="faq-body"><p>Yes. We offer live virtual sessions over Zoom available anywhere, private-office sessions in Winter Springs, Florida, and mobile sessions where we come to you.</p></div>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>Do you work with neurodivergent students? <span class="plus">+</span></summary>
+          <div class="faq-body"><p>Yes. Neurodivergent students are our specialty; our approach blends assessments, individualized tutoring, and homeschool support tailored to each learner.</p></div>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary>How do we get started? <span class="plus">+</span></summary>
+          <div class="faq-body"><p>Reach out through our contact form below or through our social channels to schedule a free introductory conversation about your child's needs.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">Let's connect</p>
+        <h2>Ready to begin? Let's talk about your child.</h2>
+        <p>Tell us a little about your family and we'll follow up to schedule your free consultation.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <ul class="contact-info-list">
+            <li>
+              <span class="ico" aria-hidden="true">🕒</span>
+              <div><strong>Hours</strong> Monday - Friday, by appointment</div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">📍</span>
+              <div><strong>Service Area</strong> Private office, in-person & mobile sessions in Winter Springs, FL; virtual sessions everywhere</div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">💻</span>
+              <div><strong>Virtual Sessions</strong> Live 1:1 tutoring & consulting via Zoom, plus 24/7 access to IXL.com</div>
+            </li>
+          </ul>
+
+          <h3 style="font-size:1.05rem;">Follow along</h3>
+          <p style="color:var(--ink-soft)">Updates, tips, and behind-the-scenes moments from our sessions.</p>
+          <div class="social-row">
+            <a href="https://www.facebook.com/HopeLearnPlay" target="_blank" rel="noopener" aria-label="Hope, Learn & Play on Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.6l.4-3H13V9c0-.9.2-1.5 1.6-1.5H16V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.7 1.4-3.7 3.9V11H7.8v3H10v8h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/hope.learn.play" target="_blank" rel="noopener" aria-label="Hope, Learn & Play on Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCucvwJXXGV-acThy6JtjE2A" target="_blank" rel="noopener" aria-label="Hope, Learn & Play on YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-card reveal" id="contactForm" action="https://formspree.io/f/myegzral" method="POST" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="parentName">Your name</label>
+              <input type="text" id="parentName" name="parentName" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="childAge">Child's age / grade</label>
+              <input type="text" id="childAge" name="childAge" placeholder="e.g. 7 years / 2nd grade" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(___) ___-____">
+            </div>
+          </div>
+          <div class="field">
+            <label for="serviceInterest">I'm interested in</label>
+            <select id="serviceInterest" name="serviceInterest" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Assessments & Diagnostics</option>
+              <option>Individualized Tutoring</option>
+              <option>Homeschool Support</option>
+              <option>Skill-Building Action Plans</option>
+              <option>Caregiver Consulting</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about your child</label>
+            <textarea id="message" name="message" placeholder="Share your child's strengths, challenges, and what you're hoping for."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send & Request Free Consultation</button>
+          <p style="font-size:.82rem; color:var(--ink-soft); margin:14px 0 0; text-align:center;">We typically reply within 1-2 business days.</p>
+        </form>
+      </div>
+
+      <div class="cta-band reveal" style="margin-top:64px">
+        <h2>Every child deserves a champion in their corner.</h2>
+        <p>Let's build a plan that helps your child feel confident, capable, and excited to learn.</p>
+        <a href="#contact" onclick="document.getElementById('parentName').focus()" class="btn btn-sun">Get Started Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BUSINESSES WE SUPPORT
+  ============================================================ -->
+  <section class="section" id="partners">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow">Affiliates</p>
+      </div>
+      <div class="partners-grid reveal">
+        <a class="partner-card" href="https://www.orangecountychildren.com/" target="_blank" rel="noopener">
+          <img src="assets/ccoc.jpg" alt="Children's Cabinet of Orange County">
+          <span>Children's Cabinet</span>
+        </a>
+		
+        <a class="partner-card" href="https://www.stepupforstudents.org/" target="_blank" rel="noopener">
+          <img src="assets/stepup.webp" alt="Step Up for Students">
+          <span>Step Up for Students</span>
+        </a>
+
+        <a class="partner-card" href="https://www.osc.org/" target="_blank" rel="noopener">
+          <img src="assets/sciencecenter.jpg" alt="Orlando Science Center">
+          <span>Orlando Science Center</span>
+        </a>
+     
+        <a class="partner-card" href="https://www.therapyunited.org/" target="_blank" rel="noopener">
+          <img src="assets/therapyunited.webp" alt="Therapy United">
+          <span>Therapy United</span>
+        </a>
+        </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     CONFIRMATION DIALOG
+============================================================ -->
+<dialog id="confirmDialog">
+  <div class="dialog-inner">
+    <img src="assets/logo.png" alt="" class="sun-mini" aria-hidden="true">
+    <h3>Thanks for reaching out!</h3>
+    <p>We've received your message and will follow up soon to schedule your free consultation.</p>
+    <button type="button" class="btn btn-primary btn-block" id="closeDialog">Close</button>
+  </div>
+</dialog>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Hope, Learn & Play logo">
+        <span>Hope, Learn & Play</span>
+      </div>
+      <p style="max-width:34ch; font-size:.95rem;">Assessments, individualized tutoring, and homeschool support for neurodivergent students, Pre-K through 12th grade.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="subscriptions.html">Subscriptions</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#partners">Our Affiliates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#contact">Book a Consultation</a></li>
+      </ul>
+    </div>
+	
+	<!--
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Do Not Sell My Personal Information</a></li>
+      </ul>
+    </div>
+	  -->
+  </div>
+
+  
+  <div class="container footer-bottom">
+    <span>&copy; <span id="year"></span> Hope, Learn & Play. All rights reserved.</span>
+    <span>Winter Springs, Florida &middot; Serving families virtually everywhere</span>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E2140" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Testimonial carousel controls ---------- */
+  var track = document.getElementById('testiTrack');
+  var prevBtn = document.getElementById('testiPrev');
+  var nextBtn = document.getElementById('testiNext');
+  function scrollByCard(dir){
+    var card = track.querySelector('.testi-card');
+    var gap = 22;
+    var amount = (card ? card.offsetWidth : 340) + gap;
+    track.scrollBy({left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth'});
+  }
+  prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
+  nextBtn.addEventListener('click', function(){ scrollByCard(1); });
+
+  /* ---------- FAQ:  */
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if(item.open){
+        faqItems.forEach(function(other){
+          if(other !== item) other.removeAttribute('open');
+        });
+      }
+    });
+  });
+
+  /* ---------- Contact form -> confirmation dialog ---------- */
+
+  var form = document.getElementById('contactForm');
+  var dialog = document.getElementById('confirmDialog');
+  var closeDialogBtn = document.getElementById('closeDialog');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    if(typeof dialog.showModal === 'function'){
+      dialog.showModal();
+    } else {
+      alert('Thanks for reaching out! We will follow up soon.');
+    }
+    form.reset();
+  });
+  closeDialogBtn.addEventListener('click', function(){ dialog.close(); });
+  dialog.addEventListener('click', function(e){
+    var rect = dialog.getBoundingClientRect();
+    var inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+    if(!inside) dialog.close();
+  });
+})();
+</script>
+</body>
+</html>
