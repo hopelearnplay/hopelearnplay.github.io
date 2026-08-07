@@ -23,17 +23,21 @@
 }
 
 html, body {
-  overflow-x: hidden;
-  max-width: 100%;
   overscroll-behavior-x: none;
   touch-action: pan-y;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 14px)}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Nunito',sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
-
-
 h1,h2,h3,h4{
   font-family:'Baloo 2',cursive;
   color:var(--ink);
