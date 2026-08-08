@@ -650,20 +650,24 @@
   "use strict";
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Testimonial carousel controls ---------- */
+  
+    /* ---------- Testimonial carousel controls ---------- */
   var track = document.getElementById('testiTrack');
   var prevBtn = document.getElementById('testiPrev');
   var nextBtn = document.getElementById('testiNext');
-  function scrollByCard(dir){
-    var card = track.querySelector('.testi-card');
-    var gap = 22;
-    var amount = (card ? card.offsetWidth : 340) + gap;
-    track.scrollBy({left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth'});
-  }
-  prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
-  nextBtn.addEventListener('click', function(){ scrollByCard(1); });
 
-  /* ---------- FAQ:  */
+  if(track && prevBtn && nextBtn){
+    function scrollByCard(dir){
+      var card = track.querySelector('.testi-card');
+      var gap = 22;
+      var amount = (card ? card.offsetWidth : 340) + gap;
+      track.scrollBy({left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth'});
+    }
+    prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
+    nextBtn.addEventListener('click', function(){ scrollByCard(1); });
+  }
+  
+  /* ---------- FAQ: only one open at a time ---------- */
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function(item){
     item.addEventListener('toggle', function(){
@@ -674,32 +678,76 @@
       }
     });
   });
-
-  /* ---------- Contact form -> confirmation dialog ---------- */
-
+ 
+  /* ---------- Contact form -> AJAX submit -> confirmation dialog ---------- */
   var form = document.getElementById('contactForm');
   var dialog = document.getElementById('confirmDialog');
   var closeDialogBtn = document.getElementById('closeDialog');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!form.checkValidity()){
-      form.reportValidity();
-      return;
-    }
-    if(typeof dialog.showModal === 'function'){
-      dialog.showModal();
-    } else {
-      alert('Thanks for reaching out! We will follow up soon.');
-    }
-    form.reset();
-  });
-  closeDialogBtn.addEventListener('click', function(){ dialog.close(); });
-  dialog.addEventListener('click', function(e){
-    var rect = dialog.getBoundingClientRect();
-    var inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
-    if(!inside) dialog.close();
-  });
+ 
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+ 
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+ 
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalText = submitBtn ? submitBtn.textContent : '';
+      if(submitBtn){
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
+ 
+      var data = new FormData(form);
+ 
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(response){
+        if(response.ok){
+          if(dialog && typeof dialog.showModal === 'function'){
+            dialog.showModal();
+          } else {
+            alert('Thanks for reaching out! We will follow up soon.');
+          }
+          form.reset();
+        } else {
+          return response.json().then(function(resData){
+            var msg = (resData && resData.errors)
+              ? resData.errors.map(function(err){ return err.message; }).join(', ')
+              : 'Oops! There was a problem submitting your form.';
+            alert(msg);
+          });
+        }
+      })
+      .catch(function(){
+        alert('Oops! There was a problem submitting your form. Please check your connection and try again.');
+      })
+      .finally(function(){
+        if(submitBtn){
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    });
+  }
+ 
+  if(dialog && closeDialogBtn){
+    closeDialogBtn.addEventListener('click', function(){ dialog.close(); });
+    dialog.addEventListener('click', function(e){
+      var rect = dialog.getBoundingClientRect();
+      var inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if(!inside) dialog.close();
+    });
+  }
 })();
+ 
+
+
 </script>
 </body>
 </html>
