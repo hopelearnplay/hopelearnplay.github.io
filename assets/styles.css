@@ -484,7 +484,7 @@ footer.site-footer a:hover{color:var(--yellow)}
 @media (max-width:560px){.partners-grid{grid-template-columns:1fr}}
 
 /* ============================================================
-   PRICING (Pricing page)
+   PRICING (Subscriptions page)
 ============================================================ */
 .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
 .price-card{
@@ -505,6 +505,43 @@ footer.site-footer a:hover{color:var(--yellow)}
   background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:26px 30px;
   box-shadow:var(--shadow); margin-top:8px;
 }
+/* Full-width homeschool card */
+.homeschool-card{
+  grid-column:1 / -1;
+
+}
+.homeschool-content{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.homeschool-content .btn{
+  width: auto;
+  justify-self: start;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.homeschool-stepup{
+  padding:28px;
+  background:var(--sand);
+  border-radius:var(--radius);
+}
+
+.stepup-logo{
+    display:block;
+    width:180px;
+    max-width:100%;
+    height:auto;
+    margin:0 auto 16px;
+}
+
+@media (max-width:760px){
+  .homeschool-content{
+    grid-template-columns:1fr;
+  }
+}
+
 @media (max-width:960px){.pricing-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.pricing-grid{grid-template-columns:1fr}}
 
