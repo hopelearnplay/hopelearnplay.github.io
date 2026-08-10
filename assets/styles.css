@@ -484,7 +484,7 @@ footer.site-footer a:hover{color:var(--yellow)}
 @media (max-width:560px){.partners-grid{grid-template-columns:1fr}}
 
 /* ============================================================
-   PRICING (Subscriptions page)
+   PRICING (Pricing page)
 ============================================================ */
 .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
 .price-card{
