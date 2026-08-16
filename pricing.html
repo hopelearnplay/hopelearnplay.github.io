@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- ============ PRIMARY SEO ============ -->
+<title>Pricing Plans | Hope, Learn & Play</title>
+<meta name="description" content="Explore tutoring and homeschool support pricing plans from Hope, Learn & Play - monthly, weekly, and hybrid options for virtual, in-person, and mobile sessions.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Hope, Learn & Play">
+<link rel="canonical" href="https://www.hopelearnplay.com/pricing.html">
+<meta name="theme-color" content="#2AAFC4">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hope, Learn & Play">
+<meta property="og:title" content="Pricing Plans | Hope, Learn & Play">
+<meta property="og:description" content="Monthly, weekly, and hybrid tutoring plans for virtual, in-person, and mobile sessions.">
+<meta property="og:url" content="https://www.hopelearnplay.com/pricing.html">
+<meta property="og:image" content="assets/logo.png">
+
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- ============================================================
+     MOBILE HARDENING + POLISH
+     (Kept separate from styles.css since I don't have that file.
+     Once you send it over, these can be merged in natively.)
+============================================================ -->
+<style>
+  /* --- Prevent any element from forcing horizontal scroll on mobile --- */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  img, svg, video {
+    max-width: 100%;
+    height: auto;
+  }
+  .container {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 32px);
+  }
+
+  /* --- Pricing grid: fluid, mobile-first --- */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(16px, 3vw, 28px);
+    align-items: stretch;
+  }
+  @media (max-width: 640px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .price-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: clamp(20px, 4vw, 28px);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(20, 20, 40, 0.05);
+    display: flex;
+    flex-direction: column;
+    border-top: 5px solid var(--accent, #2AAFC4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .price-card:hover,
+  .price-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(20, 20, 40, 0.12);
+  }
+  .price-card h3 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    margin: 0 0 4px;
+  }
+  .price-card .price {
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+    font-weight: 800;
+    color: var(--accent, #2AAFC4);
+    margin: 0 0 10px;
+  }
+  .price-card .price small {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #6b6b7a;
+  }
+  .price-card .desc {
+    font-size: 0.95rem;
+    color: #555064;
+    margin-bottom: 14px;
+  }
+  .price-card ul,
+  .pricing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .price-card ul li,
+  .pricing-list li {
+    font-size: 0.92rem;
+    padding-left: 1.5em;
+    position: relative;
+    word-wrap: break-word;
+  }
+  .price-card ul li::before,
+  .pricing-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent, #2AAFC4);
+    font-weight: 800;
+  }
+  .price-card ul li:first-child::before,
+  .pricing-list li:first-child::before {
+    content: "";
+  }
+  .pricing-note {
+    font-size: 0.85rem;
+    background: rgba(42, 175, 196, 0.08);
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+  }
+  .price-card .btn-block {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  /* --- Homeschool feature card --- */
+  .homeschool-card {
+    grid-column: 1 / -1;
+  }
+  .homeschool-content {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(20px, 4vw, 40px);
+    align-items: center;
+  }
+  @media (max-width: 720px) {
+    .homeschool-content {
+      grid-template-columns: 1fr;
+    }
+  }
+  .homeschool-stepup {
+    background: rgba(255, 165, 60, 0.08);
+    border-radius: 16px;
+    padding: clamp(16px, 3vw, 24px);
+    text-align: center;
+  }
+  .stepup-logo {
+    max-width: 220px;
+    margin: 0 auto 12px;
+    display: block;
+  }
+
+  /* --- Buttons: never overflow their container --- */
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  /* --- Respect reduced-motion preferences --- */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     HEADER / NAV
+============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand" aria-label="Hope, Learn & Play home">
+      <img src="assets/logo.png" alt="Hope, Learn & Play logo" width="52" height="52" loading="eager" decoding="async">
+      <span class="brand-text">Hope, Learn & Play<span>Educational Support Services</span></span>
+    </a>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="pricing.html" class="active" aria-current="page">Pricing</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="btn btn-secondary nav-cta">Book a Consultation</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn btn-primary desktop-only">Book a Consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="trust-bar">
+  <div class="container trust-bar-inner">
+    <a href="https://www.bbb.org/us/fl/winter-springs/profile/education/hope-learn-play-llc-0733-90763793#bbbseal" target="_blank" rel="noopener" class="bbb-link" aria-label="View our A+ Better Business Bureau rating (opens in a new tab)">
+      <img src="assets/bbb.webp" alt="Better Business Bureau A+ Rating" width="120" height="46" loading="lazy" decoding="async">
+    </a>
+    <p>Proudly <strong>BBB A+ Rated</strong> - Families trust us because we show up, every time.</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============================================================
+       HEADER
+       (Fixed: this section previously self-closed immediately, then
+       an orphaned div/section pair followed it outside any container —
+       that malformed markup was the most likely cause of the mobile
+       right-side cutoff.)
+  ============================================================ -->
+  <section class="section" id="home" style="padding-top:20px; padding-bottom:24px">
+    <div class="container">
+      <div class="section-head center reveal" style="margin-inline:auto; max-width:760px">
+        <p class="eyebrow">Services &amp; Payment</p>
+
+        <h1>Flexible Academic Support for Your Family</h1>
+
+        <p>
+          Choose the level of support that fits your student's needs.
+          Families may pay privately online, or eligible services may be funded
+          through Step Up for Students scholarship programs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRICING GRID
+  ============================================================ -->
+  <section class="section section--alt" id="pricing" style="padding-top:24px">
+    <div class="container">
+
+      <div class="pricing-grid">
+
+        <article class="price-card reveal" style="--accent:var(--teal)">
+          <h3>Single Academic Support Session</h3>
+          <p class="price">$60</p>
+          <p class="desc">
+            Flexible one-on-one academic support when your student needs it.
+          </p>
+
+          <ul class="pricing-list">
+            <li><strong>Choose your format:</strong></li>
+            <li>1 In-Person Session — Come to Us</li>
+            <li>OR 1 Virtual Session</li>
+            <li>Personalized academic support</li>
+            <li>Individualized skill-building</li>
+            <li>Student performance support</li>
+          </ul>
+
+          <a href="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-f4f7fcaf6aa94328a94247e76f51d4393a4c6a06378f4c73b397fbf5469a862a94c63edbcd9547d29160d3faab0b489c?locale=EN_US&amp;cta=saveandcopylink"
+             class="btn btn-primary btn-block"
+             target="_blank"
+             rel="noopener">
+            Book 1 Session — $60
+          </a>
+        </article>
+
+        <article class="price-card reveal" style="--accent:var(--teal)">
+          <h3>Personalized Academic Support</h3>
+          <p class="price">$120</p>
+          <p class="desc">
+            Choose the service format that works best for your student.
+          </p>
+
+          <ul class="pricing-list">
+            <li><strong>Choose your format:</strong></li>
+            <li>1 Mobile Session — We Come to You</li>
+            <li>OR 2 In-Person Sessions — Come to Us</li>
+            <li>OR 2 Virtual Sessions</li>
+            <li>Personalized academic support</li>
+            <li>Individualized skill-building</li>
+            <li>Student performance support</li>
+          </ul>
+
+          <p class="pricing-note">
+            <strong>Hybrid available:</strong> Mix In-Person and Virtual sessions to fit your family's needs.
+          </p>
+
+          <a href="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-ce1bbe76c6e34cdebbe11b21fd3530b0399c3ef205f84970971fd576819771b93ba8b1fe3dd340969071c0a157dffbb4-1?locale=EN_US&amp;cta=saveandcopylink"
+             class="btn btn-primary btn-block"
+             target="_blank"
+             rel="noopener">
+            Pay $120
+          </a>
+        </article>
+
+        <article class="price-card reveal" style="--accent:var(--purple)">
+          <h3>Academic Support Package</h3>
+          <p class="price">$480</p>
+          <p class="desc">
+            A larger prepaid package for families who want ongoing support.
+          </p>
+
+          <ul class="pricing-list">
+            <li><strong>Choose your format:</strong></li>
+            <li>4 Mobile Sessions — We Come to You</li>
+            <li>OR 8 In-Person Sessions — Come to Us</li>
+            <li>OR 8 Virtual Sessions</li>
+            <li>Personalized academic support</li>
+            <li>Individualized skill-building</li>
+            <li>Student performance support</li>
+          </ul>
+
+          <p class="pricing-note">
+            <strong>Hybrid available:</strong> Mix In-Person and Virtual sessions to fit your family's needs.
+          </p>
+
+          <a href="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-cc10bd83a5ba42d8a57db3f8d7189fb9594aeeccd4dc4600bd92571217f39eb98e912cb44c8e45908e9a79a5227959ae-0?locale=EN_US&amp;cta=saveandcopylink"
+             class="btn btn-primary btn-block"
+             target="_blank"
+             rel="noopener">
+            Pay $480
+          </a>
+        </article>
+
+        <article class="price-card reveal homeschool-card" style="--accent:var(--orange)">
+          <div class="homeschool-content">
+            <div>
+              <h3>Full-Time Homeschool Support</h3>
+              <p class="price">$960 <small>/ month</small></p>
+              <p class="desc">
+                Personalized homeschool support designed around your student's academic and learning needs.
+              </p>
+
+              <ul class="pricing-list">
+                <li>$960 per month</li>
+                <li>$9,600 per academic year</li>
+                <li>Individualized learning support</li>
+                <li>Progress monitoring</li>
+                <li>Step Up for Students funding may be available</li>
+              </ul>
+
+              <a href="index.html#contact" class="btn btn-primary btn-block">
+                Learn About Homeschool Enrollment
+              </a>
+            </div>
+
+            <div class="homeschool-stepup">
+              <a href="https://www.stepupforstudents.org/" target="_blank" rel="noopener" aria-label="Visit Step Up for Students (opens in a new tab)">
+                <img
+                  src="assets/stepup.webp"
+                  alt="Step Up for Students"
+                  class="stepup-logo"
+                  loading="lazy"
+                  decoding="async">
+              </a>
+
+              <h3>Step Up for Students Accepted</h3>
+
+              <p>
+                Eligible families may use approved Step Up for Students scholarship
+                funding for qualifying Hope, Learn &amp; Play educational services.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Not sure which plan fits?</h2>
+        <p>Book a free consultation and we'll help you match the right plan to your child's needs and your family's schedule.</p>
+        <a href="index.html#contact" class="btn btn-sun">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Hope, Learn & Play logo" loading="lazy" decoding="async">
+        <span>Hope, Learn & Play</span>
+      </div>
+      <p style="max-width:34ch; font-size:.95rem;">Assessments, individualized tutoring, and homeschool support for neurodivergent students, Pre-K through 12th grade.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#partners">Our Affiliates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="index.html#contact">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>&copy; <span id="year"></span> Hope, Learn & Play. All rights reserved.</span>
+    <span>Winter Springs, Florida &middot; Serving families virtually everywhere</span>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E2140" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
