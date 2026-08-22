@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <!-- ============ PRIMARY SEO ============ -->
-<title>Hope, Learn & Play | Educational Support Services, Tutoring & Homeschool Support</title>
-<meta name="description" content="Hope, Learn & Play is an educational support business specializing in neurodivergent students - offering assessments, individualized tutoring, and homeschool support, pre-K through 12th grade. A+ BBB rated. Virtual, in-person & mobile sessions serving Winter Springs & Central Florida.">
-<meta name="keywords" content="educational support services, neurodivergent tutoring Florida, homeschool support Winter Springs, special needs tutoring Florida, learning assessments, executive function coaching, homework help, standardized test prep">
+<title>Hope, Learn & Play | Private Tutor & Mobile Tutor Winter Springs, FL</title>
+<meta name="description" content="Private tutor & mobile tutor serving Winter Springs and Seminole County. Hope, Learn & Play offers ADHD tutoring in Orlando, plus autism, dyslexia, dyscalculia & behavioral issues support, our Step Up Tutoring program, and homeschool support, Pre-K-12. A+ BBB rated.">
+<meta name="keywords" content="mobile tutor Winter Springs, mobile tutor Seminole County, mobile tutor Orange County, private tutor Seminole County, private tutor Orange County, Step Up Tutoring, ADHD tutoring Orlando, autism tutoring, dyslexia tutoring, dyscalculia tutoring, behavioral issues, tutoring, homeschool support Winter Springs, educational support services, neurodivergent tutoring Florida, special needs tutoring Florida, learning assessments, executive function coaching, homework help, standardized test prep">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Hope, Learn & Play">
 <link rel="canonical" href="https://www.hopelearnplay.com/">
@@ -17,16 +17,16 @@
 <!-- ============ OPEN GRAPH / SOCIAL ============ -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hope, Learn & Play">
-<meta property="og:title" content="Hope, Learn & Play | Educational Support Services, Tutoring & Homeschool Support">
-<meta property="og:description" content="Assessments, individualized tutoring, and homeschool support for neurodivergent students. A+ BBB rated. Virtual, in-person & mobile sessions.">
+<meta property="og:title" content="Hope, Learn & Play | Private Tutor & Mobile Tutor Winter Springs, FL">
+<meta property="og:description" content="Private & mobile tutor serving Winter Springs and Seminole County. ADHD tutoring Orlando, autism, dyslexia, dyscalculia & behavioral issues support, plus homeschool support, Pre-K-12. A+ BBB rated.">
 <meta property="og:url" content="https://www.hopelearnplay.com/">
 <meta property="og:image" content="assets/logo.png">
 <meta property="og:image:width" content="3000">
 <meta property="og:image:height" content="3000">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hope, Learn & Play | Educational Support Services, Tutoring & Homeschool Support">
-<meta name="twitter:description" content="Assessments, individualized tutoring & homeschool support for neurodivergent students, pre-K through 12th grade. A+ BBB rated.">
+<meta name="twitter:title" content="Hope, Learn & Play | Private Tutor & Mobile Tutor Winter Springs, FL">
+<meta name="twitter:description" content="Private & mobile tutor serving Winter Springs and Seminole County: ADHD tutoring Orlando, autism, dyslexia, dyscalculia & behavioral issues support, plus homeschool support, Pre-K-12. A+ BBB rated.">
 <meta name="twitter:image" content="assets/logo.png">
 
 <!-- ============ ICONS ============ -->
@@ -48,11 +48,22 @@
   "url": "https://www.hopelearnplay.com/",
   "logo": "https://www.hopelearnplay.com/assets/logo.png",
   "image": "https://www.hopelearnplay.com/assets/logo.png",
-  "description": "Educational support business specializing in neurodivergent students, offering assessments, individualized tutoring, and homeschool support, pre-K through 12th grade.",
-  "areaServed": {
-    "@type": "City",
-    "name": "Winter Springs, Florida"
-  },
+  "description": "Private tutor and mobile tutor serving Winter Springs and Seminole County. Educational support business specializing in neurodivergent students - autism, ADHD, dyslexia, dyscalculia, and behavioral issues - offering assessments, individualized tutoring, our Step Up Tutoring program, and homeschool support, pre-K through 12th grade.",
+  "knowsAbout": ["ADHD Tutoring", "Autism", "Dyslexia", "Dyscalculia", "Behavioral Issues", "Homeschool Support", "Private Tutoring", "Mobile Tutoring"],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Winter Springs, Florida"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Seminole County, Florida"
+    },
+    {
+      "@type": "City",
+      "name": "Orlando, Florida"
+    }
+  ],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Winter Springs",
@@ -101,6 +112,16 @@
       "@type": "Question",
       "name": "Do you work with neurodivergent students?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes. Neurodivergent students are our specialty. Our approach blends assessments, individualized tutoring, and homeschool support tailored to each learner." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you tutor students with autism, ADHD, dyslexia, or dyscalculia?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We regularly work with students who have autism, ADHD, dyslexia, dyscalculia, and behavioral issues, including through our Step Up Tutoring program, which builds individualized, trackable goals around each child's learning profile." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer a private or mobile tutor in Winter Springs and Seminole County?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work as a private tutor and mobile tutor throughout Winter Springs, Seminole County, and the greater Orlando area, in addition to our private-office and virtual sessions." }
     },
     {
       "@type": "Question",
@@ -664,14 +685,45 @@
   var nextBtn = document.getElementById('testiNext');
 
   if(track && prevBtn && nextBtn){
-    function scrollByCard(dir){
-      var card = track.querySelector('.testi-card');
-      var gap = 22;
-      var amount = (card ? card.offsetWidth : 340) + gap;
-      track.scrollBy({left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth'});
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.testi-card'));
+
+    function getCurrentIndex(){
+      var trackRect = track.getBoundingClientRect();
+      var current = 0;
+      var minDist = Infinity;
+      cards.forEach(function(card, i){
+        var dist = Math.abs(card.getBoundingClientRect().left - trackRect.left);
+        if(dist < minDist){ minDist = dist; current = i; }
+      });
+      return current;
     }
-    prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
-    nextBtn.addEventListener('click', function(){ scrollByCard(1); });
+
+    function updateButtonStates(){
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      var atStart = track.scrollLeft <= 1;
+      var atEnd = track.scrollLeft >= maxScroll - 1;
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
+      prevBtn.setAttribute('aria-disabled', atStart ? 'true' : 'false');
+      nextBtn.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
+    }
+
+    function scrollToCard(dir){
+      if(!cards.length) return;
+      var current = getCurrentIndex();
+      var target = Math.min(cards.length - 1, Math.max(0, current + dir));
+      var targetCard = cards[target];
+      var trackRect = track.getBoundingClientRect();
+      var cardRect = targetCard.getBoundingClientRect();
+      var delta = cardRect.left - trackRect.left;
+      track.scrollBy({left: delta, behavior: reduceMotion ? 'auto' : 'smooth'});
+    }
+
+    prevBtn.addEventListener('click', function(){ scrollToCard(-1); });
+    nextBtn.addEventListener('click', function(){ scrollToCard(1); });
+    track.addEventListener('scroll', updateButtonStates, {passive:true});
+    window.addEventListener('resize', updateButtonStates);
+    updateButtonStates();
   }
   
   /* ---------- FAQ: only one open at a time ---------- */
