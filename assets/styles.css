@@ -332,8 +332,8 @@ max-width:780px;
 /* ============================================================
    CONTACT
 ============================================================ */
-.contact-grid{display:grid; grid-template-columns:1fr; gap:44px; align-items:start}
-.contact-card{background:#fff; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--shadow); padding:34px; max-width:620px; margin-inline:auto; width:100%}
+.contact-grid{display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; align-items:start}
+.contact-card{background:#fff; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--shadow); padding:34px}
 .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 .form-row--address{grid-template-columns:2fr .9fr 1.1fr}
 .field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
@@ -346,6 +346,8 @@ max-width:780px;
   border-color:var(--teal); box-shadow:0 0 0 4px rgba(42,175,196,.15); outline:none;
 }
 .field textarea{resize:vertical; min-height:110px}
+.contact-card .btn-submit{display:flex; width:fit-content; margin:6px auto 0; padding:13px 32px}
+@media (max-width:480px){.contact-card .btn-submit{width:100%}}
 .contact-info-list{list-style:none; margin:0 0 28px; padding:0; display:grid; gap:18px}
 .contact-info-list li{display:flex; gap:14px; align-items:flex-start}
 .contact-info-list .ico{
@@ -359,6 +361,7 @@ max-width:780px;
   align-items:center; justify-content:center; transition:background .18s ease, transform .18s ease;
 }
 .social-row a:hover{background:var(--purple); transform:translateY(-3px)}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.form-row{grid-template-columns:1fr}}
 @media (max-width:700px){.form-row--address{grid-template-columns:1fr}}
 @media (max-width:560px){.contact-card{padding:24px 20px}}
