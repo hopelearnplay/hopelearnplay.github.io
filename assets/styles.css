@@ -333,7 +333,7 @@ max-width:780px;
    CONTACT
 ============================================================ */
 .contact-grid{display:grid; grid-template-columns:1fr; gap:44px; align-items:start}
-.contact-card{background:#fff; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--shadow); padding:34px}
+.contact-card{background:#fff; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--shadow); padding:34px; max-width:620px; margin-inline:auto; width:100%}
 .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 .form-row--address{grid-template-columns:2fr .9fr 1.1fr}
 .field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
@@ -361,6 +361,7 @@ max-width:780px;
 .social-row a:hover{background:var(--purple); transform:translateY(-3px)}
 @media (max-width:560px){.form-row{grid-template-columns:1fr}}
 @media (max-width:700px){.form-row--address{grid-template-columns:1fr}}
+@media (max-width:560px){.contact-card{padding:24px 20px}}
 
 /* dialog */
 dialog#confirmDialog{
