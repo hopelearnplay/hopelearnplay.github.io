@@ -540,11 +540,11 @@
             </div>
             <div class="field">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(___) ___-____" required>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(___) ___-____">
             </div>
           </div>
           <div class="field">
-            <label for="streetAddress">Street address <span style="font-weight:400; color:var(--ink-soft)">(for mobile sessions)</span></label>
+            <label for="streetAddress">Street address</label>
             <input type="text" id="streetAddress" name="streetAddress" autocomplete="street-address" placeholder="123 Main St" required>
           </div>
           <div class="form-row form-row--address">
@@ -556,9 +556,10 @@
               <label for="state">State</label>
               <input type="text" id="state" name="state" autocomplete="address-level1" placeholder="FL" maxlength="2" required>
             </div>
+			<br>
             <div class="field">
               <label for="zip">ZIP code</label>
-              <input type="text" id="zip" name="zip" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" placeholder="32708">
+              <input type="text" id="zip" name="zip" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" placeholder="32708" required>
             </div>
           </div>
           <div class="field">
