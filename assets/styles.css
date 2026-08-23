@@ -194,7 +194,7 @@ max-width:780px;
     z-index:2;
   }
   @media (max-width:560px){
-    .hero-badge{ top:-8px; left:-8px; width:150px; }
+    .hero-badge{ top:-8px; left:-8px; width:120px; }
   }
   
 .sun-badge{width:min(360px,80%); aspect-ratio:1; position:relative}
