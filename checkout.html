@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- ============ PRIMARY SEO ============ -->
+<title>Checkout | Hope, Learn & Play</title>
+<meta name="description" content="Complete your payment for tutoring and academic support sessions with Hope, Learn & Play.">
+<meta name="robots" content="noindex, follow">
+<meta name="author" content="Hope, Learn & Play">
+<link rel="canonical" href="https://www.hopelearnplay.com/checkout.html">
+<meta name="theme-color" content="#2AAFC4">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hope, Learn & Play">
+<meta property="og:title" content="Checkout | Hope, Learn & Play">
+<meta property="og:description" content="Complete your payment for tutoring and academic support sessions with Hope, Learn & Play.">
+<meta property="og:url" content="https://www.hopelearnplay.com/checkout.html">
+<meta property="og:image" content="assets/logo.png">
+
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- ============================================================
+     CHECKOUT-SPECIFIC STYLES
+     (mobile hardening + premium two-column checkout layout,
+     built on top of the site's existing tokens/classes)
+============================================================ -->
+<style>
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  img, svg, video {
+    max-width: 100%;
+    height: auto;
+  }
+  .container {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 32px);
+  }
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* --- Checkout shell --- */
+  .checkout-header{
+    max-width: 720px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .checkout-grid{
+    display:grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 900px){
+    .checkout-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* --- Billing card --- */
+  .billing-card{
+    background:#fff; border-radius:var(--radius); border:1px solid var(--line);
+    box-shadow:var(--shadow); padding:36px;
+  }
+  .billing-card h2{font-size:1.35rem; margin-bottom:4px}
+  .billing-card .card-sub{color:var(--ink-soft); font-size:.92rem; margin-bottom:26px}
+
+  .field-grid{ display:grid; gap:18px; }
+  .field-grid .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:0 }
+  .field-grid .form-row--zip{ grid-template-columns:1.5fr 1fr .9fr; }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:0; }
+  .field label{
+    font-weight:700; font-size:.82rem; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft);
+  }
+  .field input, .field select{
+    font:inherit; padding:13px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--cream);
+    transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  .field input:focus, .field select:focus{
+    border-color:var(--teal); box-shadow:0 0 0 4px rgba(42,175,196,.15); outline:none;
+  }
+  @media (max-width:560px){
+    .field-grid .form-row, .field-grid .form-row--zip{ grid-template-columns:1fr; }
+  }
+
+  .secure-note{
+    display:flex; align-items:center; gap:8px; margin-top:24px; font-size:.85rem; color:var(--ink-soft);
+  }
+  .secure-note svg{ flex-shrink:0; color:var(--teal-dark); }
+
+  /* --- Order summary card --- */
+  .summary-card{
+    background:#fff; border-radius:var(--radius); border:1px solid var(--line);
+    box-shadow:var(--shadow); padding:32px;
+    position: sticky;
+    top: calc(var(--header-h) + 20px);
+  }
+  .summary-card h2{font-size:1.2rem; margin-bottom:20px}
+
+  .plan-options{ display:grid; gap:12px; margin-bottom:24px; }
+  .plan-option{ position:relative; }
+  .plan-option input[type="radio"]{
+    position:absolute; opacity:0; width:100%; height:100%; margin:0; top:0; left:0; cursor:pointer;
+  }
+  .plan-option label{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    border:1.5px solid var(--line); border-radius:14px; padding:14px 16px;
+    cursor:pointer; transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    background:var(--cream);
+  }
+  .plan-option label .plan-radio-dot{
+    width:20px; height:20px; border-radius:50%; border:2px solid var(--line); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; background:#fff;
+    transition:border-color .18s ease;
+  }
+  .plan-option label .plan-radio-dot::after{
+    content:''; width:10px; height:10px; border-radius:50%; background:var(--purple);
+    transform:scale(0); transition:transform .15s ease;
+  }
+  .plan-option label .plan-name-wrap{ display:flex; align-items:center; gap:12px; flex:1; }
+  .plan-option label .plan-name{ font-family:'Baloo 2',cursive; font-weight:700; font-size:.98rem; }
+  .plan-option label .plan-price{ font-family:'Baloo 2',cursive; font-weight:800; color:var(--purple-dark); font-size:1.05rem; }
+  .plan-option input:checked + label{
+    border-color:var(--purple); background:rgba(139,46,147,.06);
+    box-shadow:0 4px 14px rgba(139,46,147,.12);
+  }
+  .plan-option input:checked + label .plan-radio-dot{ border-color:var(--purple); }
+  .plan-option input:checked + label .plan-radio-dot::after{ transform:scale(1); }
+  .plan-option input:focus-visible + label{ outline:3px solid var(--teal); outline-offset:2px; }
+
+  .summary-totals{
+    border-top:1.5px dashed var(--line); padding-top:18px; margin-bottom:22px;
+    display:grid; gap:10px; font-size:.95rem;
+  }
+  .summary-totals .row{ display:flex; justify-content:space-between; color:var(--ink-soft); }
+  .summary-totals .row.total{
+    color:var(--ink); font-family:'Baloo 2',cursive; font-weight:800; font-size:1.2rem;
+    padding-top:10px; border-top:1.5px solid var(--line);
+  }
+  .summary-totals .row.total span:last-child{ color:var(--purple-dark); }
+
+  .summary-card .btn-block{ padding:15px 28px; font-size:1.05rem; }
+
+  .trust-row{
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
+    font-size:.78rem; color:var(--ink-soft);
+  }
+  .trust-row .trust-item{ display:flex; align-items:center; gap:6px; }
+  .trust-row svg{ color:var(--teal-dark); flex-shrink:0; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     HEADER / NAV
+============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand" aria-label="Hope, Learn & Play home">
+      <img src="assets/logo.png" alt="Hope, Learn & Play logo" width="52" height="52" loading="eager" decoding="async">
+      <span class="brand-text">Hope, Learn & Play<span>Educational Support Services</span></span>
+    </a>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="btn btn-secondary nav-cta">Book a Consultation</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn btn-primary desktop-only">Book a Consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     TRUST BAR (BBB)
+============================================================ -->
+<div class="trust-bar">
+  <div class="container trust-bar-inner">
+    <a href="https://www.bbb.org/us/fl/winter-springs/profile/education/hope-learn-play-llc-0733-90763793#bbbseal" target="_blank" rel="noopener" class="bbb-link" aria-label="View our A+ Better Business Bureau rating (opens in a new tab)">
+      <img src="assets/bbb.webp" alt="Better Business Bureau A+ Rating" width="120" height="46" loading="lazy" decoding="async">
+    </a>
+    <p>Proudly <strong>BBB A+ Rated</strong> - Families trust us because we show up, every time.</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============================================================
+       CHECKOUT
+  ============================================================ -->
+  <section class="section" id="checkout" style="padding-top:36px; padding-bottom:80px">
+    <div class="container">
+
+      <div class="checkout-header">
+        <p class="eyebrow" style="justify-content:center">Secure Checkout</p>
+        <h1>Complete Your Order</h1>
+        <p>Confirm your plan and details below.</p>
+      </div>
+
+      <form class="checkout-grid" id="checkoutForm" action="https://formspree.io/f/myegzral" method="POST" novalidate>
+
+        <div class="billing-card reveal">
+          <h2>Billing Details</h2>
+          <p class="card-sub">This helps us confirm your booking and prepare your session.</p>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(___) ___-____" required>
+            </div>
+
+            <div class="field">
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" autocomplete="street-address" required>
+            </div>
+
+            <div class="form-row form-row--zip">
+              <div class="field">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" autocomplete="address-level2" required>
+              </div>
+              <div class="field">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" autocomplete="address-level1" required>
+              </div>
+              <div class="field">
+                <label for="zip">ZIP</label>
+                <input type="text" id="zip" name="zip" autocomplete="postal-code" inputmode="numeric" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="secure-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span>Your information is only used to prepare your booking. Payment is completed securely on the next page.</span>
+          </div>
+        </div>
+
+        <div class="summary-card reveal">
+          <h2>Order Summary</h2>
+
+          <div class="plan-options" id="planOptions">
+            <div class="plan-option">
+              <input type="radio" id="plan-session1" name="plan" value="session1" checked
+                data-name="Book 1 Session"
+                data-price="$60"
+                data-link="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-f4f7fcaf6aa94328a94247e76f51d4393a4c6a06378f4c73b397fbf5469a862a94c63edbcd9547d29160d3faab0b489c?locale=EN_US&amp;cta=saveandcopylink">
+              <label for="plan-session1">
+                <span class="plan-name-wrap">
+                  <span class="plan-radio-dot" aria-hidden="true"></span>
+                  <span class="plan-name">Book 1 Session</span>
+                </span>
+                <span class="plan-price">$60</span>
+              </label>
+            </div>
+
+            <div class="plan-option">
+              <input type="radio" id="plan-package120" name="plan" value="package120"
+                data-name="Personalized Academic Support"
+                data-price="$120"
+                data-link="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-ce1bbe76c6e34cdebbe11b21fd3530b0399c3ef205f84970971fd576819771b93ba8b1fe3dd340969071c0a157dffbb4-1?locale=EN_US&amp;cta=saveandcopylink">
+              <label for="plan-package120">
+                <span class="plan-name-wrap">
+                  <span class="plan-radio-dot" aria-hidden="true"></span>
+                  <span class="plan-name">Personalized Academic Support</span>
+                </span>
+                <span class="plan-price">$120</span>
+              </label>
+            </div>
+
+            <div class="plan-option">
+              <input type="radio" id="plan-package480" name="plan" value="package480"
+                data-name="Academic Support Package"
+                data-price="$480"
+                data-link="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-cc10bd83a5ba42d8a57db3f8d7189fb9594aeeccd4dc4600bd92571217f39eb98e912cb44c8e45908e9a79a5227959ae-0?locale=EN_US&amp;cta=saveandcopylink">
+              <label for="plan-package480">
+                <span class="plan-name-wrap">
+                  <span class="plan-radio-dot" aria-hidden="true"></span>
+                  <span class="plan-name">Academic Support Package</span>
+                </span>
+                <span class="plan-price">$480</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="summary-totals">
+            <div class="row">
+              <span id="summaryPlanName">Book 1 Session</span>
+              <span id="summaryPlanPrice">$60</span>
+            </div>
+            <div class="row total">
+              <span>Total due</span>
+              <span id="summaryTotal">$60</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+
+          <div class="trust-row">
+            <span class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              Secure payment
+            </span>
+            <span class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>
+              Powered by Intuit
+            </span>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Hope, Learn & Play logo" loading="lazy" decoding="async">
+        <span>Hope, Learn & Play</span>
+      </div>
+      <p style="max-width:34ch; font-size:.95rem;">Assessments, individualized tutoring, and homeschool support for neurodivergent students, Pre-K through 12th grade.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#partners">Our Affiliates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="index.html#contact">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>&copy; <span id="year"></span> Hope, Learn & Play. All rights reserved.</span>
+    <span>Winter Springs, Florida &middot; Serving families virtually everywhere</span>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E2140" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var radios = Array.prototype.slice.call(document.querySelectorAll('input[name="plan"]'));
+  var summaryName = document.getElementById('summaryPlanName');
+  var summaryPrice = document.getElementById('summaryPlanPrice');
+  var summaryTotal = document.getElementById('summaryTotal');
+  var form = document.getElementById('checkoutForm');
+
+  function updateSummary(){
+    var checked = radios.filter(function(r){ return r.checked; })[0];
+    if(!checked) return;
+    summaryName.textContent = checked.getAttribute('data-name');
+    summaryPrice.textContent = checked.getAttribute('data-price');
+    summaryTotal.textContent = checked.getAttribute('data-price');
+  }
+
+  radios.forEach(function(radio){
+    radio.addEventListener('change', updateSummary);
+  });
+
+  /* ---------- Pre-select plan from URL (?plan=session1|package120|package480) ---------- */
+  var params = new URLSearchParams(window.location.search);
+  var requestedPlan = params.get('plan');
+  if(requestedPlan){
+    var match = radios.filter(function(r){ return r.value === requestedPlan; })[0];
+    if(match){
+      match.checked = true;
+    }
+  }
+  updateSummary();
+
+  /* ---------- Checkout form -> send to Formspree AND redirect to matching payment link ---------- */
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      var checked = radios.filter(function(r){ return r.checked; })[0];
+      var link = checked ? checked.getAttribute('data-link') : null;
+
+      // Open the payment link right away (must happen synchronously on the
+      // click so browsers don't block it as a popup).
+      if(link){
+        window.open(link, '_blank', 'noopener');
+      }
+
+      // Also send the billing details to Formspree in the background.
+      var data = new FormData(form);
+      if(checked){
+        data.append('plan', checked.getAttribute('data-name'));
+        data.append('price', checked.getAttribute('data-price'));
+      }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).catch(function(){
+        /* Payment redirect already happened; a Formspree hiccup shouldn't block checkout. */
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
