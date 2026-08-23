@@ -186,15 +186,15 @@ max-width:780px;
 
   .hero-badge{
     position:absolute;
-    top:-14px;
-    left:-14px;
-    width:min(250px, 40%);
+    top:-56px;
+    left:-56px;
+    width:min(300px, 50%);
     height:auto;
     filter:drop-shadow(0 6px 14px rgba(0,0,0,.18));
     z-index:2;
   }
   @media (max-width:560px){
-    .hero-badge{ top:-8px; left:-8px; width:120px; }
+    .hero-badge{ top:-32px; left:-32px; width:180px; }
   }
   
 .sun-badge{width:min(360px,80%); aspect-ratio:1; position:relative}
