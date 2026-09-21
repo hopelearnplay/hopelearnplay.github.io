@@ -1,15 +1,4 @@
 /* ============================================================
-   HOPE, LEARN & PLAY - SITE STYLES
-   One stylesheet for every page. All page-specific CSS lives at
-   the bottom (Pricing / About / Checkout); no page needs a
-   <style> block or style="" attributes.
-
-   Ordering note: several modifiers (.section--*, .section-head--wide,
-   .cta-band--spaced) share specificity with the rule they adjust, so
-   they must stay BELOW the rule they modify.
-============================================================ */
-
-/* ============================================================
    TOKENS
 ============================================================ */
 :root{
