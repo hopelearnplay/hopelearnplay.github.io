@@ -29,151 +29,6 @@
 
 <link rel="stylesheet" href="assets/styles.css">
 
-<!-- ============================================================
-     CHECKOUT-SPECIFIC STYLES
-     (mobile hardening + premium two-column checkout layout,
-     built on top of the site's existing tokens/classes)
-============================================================ -->
-<style>
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  img, svg, video {
-    max-width: 100%;
-    height: auto;
-  }
-  .container {
-    width: 100%;
-    max-width: 1180px;
-    margin-inline: auto;
-    padding-inline: clamp(16px, 4vw, 32px);
-  }
-  .btn {
-    max-width: 100%;
-    white-space: normal;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  /* --- Checkout shell --- */
-  .checkout-header{
-    max-width: 720px;
-    margin: 0 auto 40px;
-    text-align: center;
-  }
-
-  .checkout-grid{
-    display:grid;
-    grid-template-columns: 1.35fr 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-  @media (max-width: 900px){
-    .checkout-grid{ grid-template-columns: 1fr; }
-  }
-
-  /* --- Billing card --- */
-  .billing-card{
-    background:#fff; border-radius:var(--radius); border:1px solid var(--line);
-    box-shadow:var(--shadow); padding:36px;
-  }
-  .billing-card h2{font-size:1.35rem; margin-bottom:4px}
-  .billing-card .card-sub{color:var(--ink-soft); font-size:.92rem; margin-bottom:26px}
-
-  .field-grid{ display:grid; gap:18px; }
-  .field-grid .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:0 }
-  .field-grid .form-row--zip{ grid-template-columns:1.5fr 1fr .9fr; }
-  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:0; }
-  .field label{
-    font-weight:700; font-size:.82rem; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft);
-  }
-  .field input, .field select{
-    font:inherit; padding:13px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--cream);
-    transition:border-color .18s ease, box-shadow .18s ease;
-  }
-  .field input:focus, .field select:focus{
-    border-color:var(--teal); box-shadow:0 0 0 4px rgba(42,175,196,.15); outline:none;
-  }
-  @media (max-width:560px){
-    .field-grid .form-row, .field-grid .form-row--zip{ grid-template-columns:1fr; }
-  }
-
-  .secure-note{
-    display:flex; align-items:center; gap:8px; margin-top:24px; font-size:.85rem; color:var(--ink-soft);
-  }
-  .secure-note svg{ flex-shrink:0; color:var(--teal-dark); }
-
-  /* --- Order summary card --- */
-  .summary-card{
-    background:#fff; border-radius:var(--radius); border:1px solid var(--line);
-    box-shadow:var(--shadow); padding:32px;
-    position: sticky;
-    top: calc(var(--header-h) + 20px);
-  }
-  .summary-card h2{font-size:1.2rem; margin-bottom:20px}
-
-  .plan-options{ display:grid; gap:12px; margin-bottom:24px; }
-  .plan-option{ position:relative; }
-  .plan-option input[type="radio"]{
-    position:absolute; opacity:0; width:100%; height:100%; margin:0; top:0; left:0; cursor:pointer;
-  }
-  .plan-option label{
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    border:1.5px solid var(--line); border-radius:14px; padding:14px 16px;
-    cursor:pointer; transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;
-    background:var(--cream);
-  }
-  .plan-option label .plan-radio-dot{
-    width:20px; height:20px; border-radius:50%; border:2px solid var(--line); flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; background:#fff;
-    transition:border-color .18s ease;
-  }
-  .plan-option label .plan-radio-dot::after{
-    content:''; width:10px; height:10px; border-radius:50%; background:var(--purple);
-    transform:scale(0); transition:transform .15s ease;
-  }
-  .plan-option label .plan-name-wrap{ display:flex; align-items:center; gap:12px; flex:1; }
-  .plan-option label .plan-name{ font-family:'Baloo 2',cursive; font-weight:700; font-size:.98rem; }
-  .plan-option label .plan-price{ font-family:'Baloo 2',cursive; font-weight:800; color:var(--purple-dark); font-size:1.05rem; }
-  .plan-option input:checked + label{
-    border-color:var(--purple); background:rgba(139,46,147,.06);
-    box-shadow:0 4px 14px rgba(139,46,147,.12);
-  }
-  .plan-option input:checked + label .plan-radio-dot{ border-color:var(--purple); }
-  .plan-option input:checked + label .plan-radio-dot::after{ transform:scale(1); }
-  .plan-option input:focus-visible + label{ outline:3px solid var(--teal); outline-offset:2px; }
-
-  .summary-totals{
-    border-top:1.5px dashed var(--line); padding-top:18px; margin-bottom:22px;
-    display:grid; gap:10px; font-size:.95rem;
-  }
-  .summary-totals .row{ display:flex; justify-content:space-between; color:var(--ink-soft); }
-  .summary-totals .row.total{
-    color:var(--ink); font-family:'Baloo 2',cursive; font-weight:800; font-size:1.2rem;
-    padding-top:10px; border-top:1.5px solid var(--line);
-  }
-  .summary-totals .row.total span:last-child{ color:var(--purple-dark); }
-
-  .summary-card .btn-block{ padding:15px 28px; font-size:1.05rem; }
-
-  .trust-row{
-    display:flex; align-items:center; justify-content:center; gap:16px;
-    margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
-    font-size:.78rem; color:var(--ink-soft);
-  }
-  .trust-row .trust-item{ display:flex; align-items:center; gap:6px; }
-  .trust-row svg{ color:var(--teal-dark); flex-shrink:0; }
-</style>
 </head>
 <body>
 
@@ -227,11 +82,11 @@
   <!-- ============================================================
        CHECKOUT
   ============================================================ -->
-  <section class="section" id="checkout" style="padding-top:36px; padding-bottom:80px">
+  <section class="section checkout-section" id="checkout">
     <div class="container">
 
       <div class="checkout-header">
-        <p class="eyebrow" style="justify-content:center">Secure Checkout</p>
+        <p class="eyebrow">Secure Checkout</p>
         <h1>Complete Your Order</h1>
         <p>Confirm your plan and details below.</p>
       </div>
@@ -325,6 +180,20 @@
                 <span class="plan-price">$480</span>
               </label>
             </div>
+
+            <div class="plan-option">
+              <input type="radio" id="plan-registration" name="plan" value="registration"
+                data-name="Registration Fee"
+                data-price="$200"
+                data-link="https://connect.intuit.com/pay/HopeLearnPlay/scs-v1-77620b4bfe1444b4a1575d11e47b7c0e83420297ef5f40548842a3bfdbb4127c70a417eb55f44c12911ea3641db6a006-1?locale=EN_US&amp;cta=saveandcopylink">
+              <label for="plan-registration">
+                <span class="plan-name-wrap">
+                  <span class="plan-radio-dot" aria-hidden="true"></span>
+                  <span class="plan-name">Registration Fee</span>
+                </span>
+                <span class="plan-price">$200</span>
+              </label>
+            </div>
           </div>
 
           <div class="summary-totals">
@@ -369,7 +238,7 @@
         <img src="assets/logo.png" alt="Hope, Learn & Play logo" loading="lazy" decoding="async">
         <span>Hope, Learn & Play</span>
       </div>
-      <p style="max-width:34ch; font-size:.95rem;">Assessments, individualized tutoring, and homeschool support for neurodivergent students, Pre-K through 12th grade.</p>
+      <p class="footer-blurb">Assessments, individualized tutoring, and homeschool support for neurodivergent students, Pre-K through 12th grade.</p>
     </div>
     <div>
       <h4>Explore</h4>
@@ -424,7 +293,7 @@
     radio.addEventListener('change', updateSummary);
   });
 
-  /* ---------- Pre-select plan from URL (?plan=session1|package120|package480) ---------- */
+  /* ---------- Pre-select plan from URL (?plan=session1|package120|package480|registration) ---------- */
   var params = new URLSearchParams(window.location.search);
   var requestedPlan = params.get('plan');
   if(requestedPlan){
